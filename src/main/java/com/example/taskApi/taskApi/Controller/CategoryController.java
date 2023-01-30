@@ -19,7 +19,7 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    @GetMapping
+    @GetMapping("/allcategory")
     public ResponseEntity<List<Category>> getAll() {
         return ResponseEntity.ok(categoryRepository.findAll());
     }
@@ -41,12 +41,12 @@ public class CategoryController {
         return ResponseEntity.ok(categoryRepository.findAllByKeywordContainingIgnoreCase(keyword));
     }
 
-    @PostMapping
+    @PostMapping("/registercategory")
     public ResponseEntity<Category> registerCategory(@RequestBody Category category) {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryRepository.save(category));
     }
 
-    @PutMapping
+    @PutMapping("/updatecategory/{id}")
     public ResponseEntity<Category> updateCategory(@Validated @RequestBody Category category) {
         return categoryRepository.findById(category.getId())
                 .map(resp -> { return ResponseEntity.ok().body(categoryRepository.save(category));})

@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table
@@ -13,7 +12,7 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     @NonNull
     private String type;
@@ -32,7 +31,7 @@ public class Category {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

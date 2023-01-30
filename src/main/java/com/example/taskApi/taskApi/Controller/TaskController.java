@@ -17,7 +17,7 @@ public class TaskController {
     @Autowired
     private TaskRepository taskRepository;
 
-    @GetMapping
+    @GetMapping("/alltask")
     public ResponseEntity<List<Task>> getAll() {
         return ResponseEntity.ok(taskRepository.findAll());
     }
@@ -34,17 +34,17 @@ public class TaskController {
         return ResponseEntity.ok(taskRepository.findAllByNameContainingIgnoreCase(name));
     }
 
-    @GetMapping("{keyword}")
+    @GetMapping("/{keyword}")
     public ResponseEntity<List<Task>> getKeyword (@PathVariable String keyword) {
         return ResponseEntity.ok(taskRepository.findAllByKeywordContainingIgnoreCase(keyword));
     }
 
-    @PostMapping
+    @PostMapping("/registertask")
     public ResponseEntity<Task> resgisterTask(@RequestBody Task task) {
         return ResponseEntity.status(HttpStatus.CREATED).body(taskRepository.save(task));
     }
 
-    @PutMapping
+    @PutMapping("/updatetask")
     public ResponseEntity<Task> updateTask(@RequestBody Task task) {
         return taskRepository.findById(task.getId())
                 .map(resp -> { return ResponseEntity.ok().body(taskRepository.save(task));})
