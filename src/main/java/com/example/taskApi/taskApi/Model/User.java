@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table
@@ -13,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     @NonNull
     private String name;
@@ -25,11 +24,11 @@ public class User {
     @JsonIgnoreProperties({"user", "task"})
     private List<Task> task;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
