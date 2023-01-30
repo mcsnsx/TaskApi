@@ -34,7 +34,7 @@ public class Task {
     @JsonIgnoreProperties("task")
     private Category category;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
