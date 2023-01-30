@@ -28,7 +28,7 @@ public class Category {
     @JsonIgnoreProperties({"category", "task"})
     private List <Task> task;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
